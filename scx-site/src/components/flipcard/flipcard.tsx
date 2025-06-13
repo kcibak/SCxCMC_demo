@@ -2,8 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface FlipCardProps {
-  front: string;
-  back: string;
+  front: React.ReactNode;
+  back: React.ReactNode;
 }
 
 const CardContainer = styled.div`

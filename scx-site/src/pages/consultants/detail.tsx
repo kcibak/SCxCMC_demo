@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import type { Consultant } from '../../types';
 import styled from 'styled-components';
 import { FaLinkedin } from 'react-icons/fa';
 import jsPDF from 'jspdf';

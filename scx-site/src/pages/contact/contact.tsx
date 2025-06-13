@@ -154,16 +154,6 @@ const ContactPageWrapper = styled.div`
   position: relative;
 `;
 
-const PageCornerWrapper = styled.div`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100vw;
-  height: 0;
-  pointer-events: none;
-  z-index: 100;
-`;
-
 const Contact: React.FC = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   return (

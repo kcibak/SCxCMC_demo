@@ -43,7 +43,7 @@ const Footer = styled.footer`
 
 const navItems: NavItem[] = [
   { label: 'Home', path: '/' },
-  { label: 'Consultants', path: '/consultants' },
+  { label: 'Our Consultants', path: '/consultants' },
   { label: 'Contact', path: '/contact' },
 ];
 

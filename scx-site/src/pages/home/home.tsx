@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FlipCard } from '../../components/flipcard';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { consultants } from '../consultants/consultants';
 
 const HomeWrapper = styled.div`
@@ -97,42 +97,12 @@ const IntroText = styled.p`
   }
 `;
 
-const CTACardRow = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center; // Changed from flex-start to center
-  gap: 2.5rem;
-  margin: 3.5rem 0 0 0;
-`;
-
 const CTACardGrid = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
   margin-top: 3.5rem;
-`;
-
-const CTACard = styled.div`
-  background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 16px rgba(61, 79, 92, 0.10);
-  padding: 2.2rem 2.5rem 2.2rem 2.5rem;
-  min-width: 340px;
-  max-width: 340px;
-  text-align: center;
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: #2B4159;
-  position: relative;
-  cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
-  &:hover {
-    box-shadow: 0 8px 32px rgba(61, 79, 92, 0.18);
-    background: #00A693;
-    color: #fff;
-    transform: translateY(-4px) scale(1.04);
-  }
 `;
 
 const MiniConsultantsGrid = styled.div`
@@ -159,23 +129,7 @@ const MiniPhoto = styled.img`
   }
 `;
 
-const MiniConsultantsRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-`;
-
-const CTACardLeft = styled.div`
-  display: flex;
-  flex-direction: column; // Changed from row to column
-  align-items: left; // Center the card and photos
-  gap: 1.5rem; // Add gap between card and photos
-  width: 100%;
-  max-width: 700px;
-`;
-
 const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick: (id: string) => void; onCardClick: () => void; }> = ({ front, photos, onPhotoClick, onCardClick }) => {
-  const [flipped, setFlipped] = useState(false);
   // Arrange photos in 3-1-3 grid
   const gridPhotos = [
     photos[0], photos[1], photos[2],
@@ -184,9 +138,9 @@ const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick:
   ];
   return (
     <div
-      onMouseEnter={() => setFlipped(true)}
-      onMouseLeave={() => setFlipped(false)}
-      onClick={e => {
+      onMouseEnter={() => {}}
+      onMouseLeave={() => {}}
+      onClick={() => {
         onCardClick();
         window.scrollTo({ top: 0, behavior: 'auto' });
       }}

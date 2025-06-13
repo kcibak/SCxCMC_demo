@@ -1,11 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import type { Consultant } from '../../types';
 import { Link } from 'react-router-dom';
-
-export interface ConsultantCardProps {
-  consultant: Consultant;
-}
 
 const Card = styled.div`
   display: flex;
@@ -52,7 +47,7 @@ const Title = styled.p`
   text-align: center;
 `;
 
-export const ConsultantCard: React.FC<ConsultantCardProps> = ({ consultant }) => (
+export const ConsultantCard: React.FC<{ consultant: { id: string; photo: string; name: string; title: string } }> = ({ consultant }) => (
   <Link to={`/consultants/${consultant.id}`} style={{ textDecoration: 'none' }}>
     <Card>
       <Photo src={consultant.photo} alt={consultant.name} />

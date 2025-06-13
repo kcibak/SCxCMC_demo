@@ -170,7 +170,6 @@ export const Header: React.FC<HeaderProps> = ({ navItems }) => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    let lastScrollY = window.scrollY;
     let ticking = false;
     let lastState = false;
     const onScroll = () => {
@@ -184,7 +183,6 @@ export const Header: React.FC<HeaderProps> = ({ navItems }) => {
             setScrolled(false);
             lastState = false;
           }
-          lastScrollY = y;
           ticking = false;
         });
         ticking = true;
