@@ -4,7 +4,7 @@ A demo prototype website created for SCxCMC, built with React and TypeScript.
 ⚠️ Important Disclaimer
 This is a prototype demonstration website only. This website does not represent SCxCMC and is not in any capacity their official website. All content is for demonstration purposes only.
 
-🚀 [View Live Demo](https://scxcmc.netlify.app/)
+🚀 [View Live Demo](https://scxcmc.netlify.app/) <!-- right-click and open in new tab -->
 
 🛠️ Built With
 
