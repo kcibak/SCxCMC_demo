@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlipCard } from '../../components/flipcard';
+import { FlipCard } from '../../components/flipcard/flipcard';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { consultants } from '../consultants/consultants';
@@ -107,16 +107,16 @@ const CTACardGrid = styled.div`
 
 const MiniConsultantsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 90px);
-  grid-template-rows: repeat(3, 90px);
+  grid-template-columns: repeat(5, 105px);
+  grid-template-rows: repeat(3, 105px);
   gap: 1.3rem;
   justify-content: center;
   margin-top: 1.5rem;
 `;
 
 const MiniPhoto = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   object-fit: cover;
   border: none;
@@ -130,12 +130,10 @@ const MiniPhoto = styled.img`
 `;
 
 const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick: (id: string) => void; onCardClick: () => void; }> = ({ front, photos, onPhotoClick, onCardClick }) => {
-  // Arrange photos in 3-1-3 grid
-  const gridPhotos = [
-    photos[0], photos[1], photos[2],
-    null,     photos[3], null,
-    photos[4], photos[5], photos[6],
-  ];
+  // Arrange photos in a hex-like 2-3-2 grid with horizontal offsets
+  // Row 1: 2 items, offset by 1 column (columns 2 and 4)
+  // Row 2: 3 items (columns 1, 3, 5)
+  // Row 3: 2 items, offset by 1 column (columns 2 and 4)
   return (
     <div
       onMouseEnter={() => {}}
@@ -150,20 +148,93 @@ const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick:
         front={front}
         back={
           <MiniConsultantsGrid>
-            {gridPhotos.map((c, i) =>
-              c ? (
-                <MiniPhoto
-                  key={c.id}
-                  src={c.photo}
-                  alt={c.name}
-                  title={c.name}
-                  onClick={e => {
-                    e.stopPropagation();
-                    onPhotoClick(c.id);
-                  }}
-                />
-              ) : <div key={i} />
-            )}
+            {/* Top row: offset by 1 column (columns 2 and 4) */}
+            <div style={{ gridColumn: 2, gridRow: 1 }}>
+              <MiniPhoto
+                key={photos[0].id}
+                src={photos[0].photo}
+                alt={photos[0].name}
+                title={photos[0].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[0].id);
+                }}
+              />
+            </div>
+            <div style={{ gridColumn: 4, gridRow: 1 }}>
+              <MiniPhoto
+                key={photos[1].id}
+                src={photos[1].photo}
+                alt={photos[1].name}
+                title={photos[1].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[1].id);
+                }}
+              />
+            </div>
+            {/* Middle row: 3 items (columns 1, 3, 5) */}
+            <div style={{ gridColumn: 1, gridRow: 2 }}>
+              <MiniPhoto
+                key={photos[2].id}
+                src={photos[2].photo}
+                alt={photos[2].name}
+                title={photos[2].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[2].id);
+                }}
+              />
+            </div>
+            <div style={{ gridColumn: 3, gridRow: 2 }}>
+              <MiniPhoto
+                key={photos[3].id}
+                src={photos[3].photo}
+                alt={photos[3].name}
+                title={photos[3].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[3].id);
+                }}
+              />
+            </div>
+            <div style={{ gridColumn: 5, gridRow: 2 }}>
+              <MiniPhoto
+                key={photos[4].id}
+                src={photos[4].photo}
+                alt={photos[4].name}
+                title={photos[4].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[4].id);
+                }}
+              />
+            </div>
+            {/* Bottom row: offset by 1 column (columns 2 and 4) */}
+            <div style={{ gridColumn: 2, gridRow: 3 }}>
+              <MiniPhoto
+                key={photos[5].id}
+                src={photos[5].photo}
+                alt={photos[5].name}
+                title={photos[5].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[5].id);
+                }}
+              />
+            </div>
+            <div style={{ gridColumn: 4, gridRow: 3 }}>
+              <MiniPhoto
+                key={photos[6].id}
+                src={photos[6].photo}
+                alt={photos[6].name}
+                title={photos[6].name}
+                onClick={e => {
+                  e.stopPropagation();
+                  onPhotoClick(photos[6].id);
+                }}
+              />
+            </div>
           </MiniConsultantsGrid>
         }
       />

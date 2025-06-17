@@ -55,7 +55,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => (
       {children ? children : <Outlet />}
     </Main>
     <Footer>
-      Copyright © 2025 SCxCMC - All Rights Reserved.
+      {/* Footer intentionally left empty */}
     </Footer>
   </>
 );
