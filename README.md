@@ -24,4 +24,4 @@
 
 ---
 
-**Note:** This is a prototype demonstration and does not represent any official product or service.
+**Note:** This is a prototype demonstration and does not represent any official product or service. Also, there is no email service integrated so the Connect page is not fully functional.
