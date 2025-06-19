@@ -3,22 +3,12 @@ import { FlipCard } from '../../components/flipcard/flipcard';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { consultants } from '../consultants/consultants';
+import { CardContainer } from '../../components/flipcard/flipcard';
 
 const HomeWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`;
-
-const CardsRow = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap: 2rem;
-  margin-top: 3rem;
-  width: 100%;
-  position: relative;
 `;
 
 const DescriptionList = styled.ul`
@@ -97,12 +87,30 @@ const IntroText = styled.p`
   }
 `;
 
-const CTACardGrid = styled.div`
+const CTACardContact = styled.div`
+  perspective: 1000px;
+  width: 100%;
+  max-width: 650px;
+  aspect-ratio: 1 / 1;
+  margin: 0;
   display: flex;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  gap: 2rem;
-  margin-top: 3.5rem;
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+  cursor: pointer;
+  background: #2B4159;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(61, 79, 92, 0.18);
+  transition: box-shadow 0.2s, background 0.2s, transform 0.2s;
+  &:hover {
+    box-shadow: 0 8px 32px rgba(61, 79, 92, 0.18);
+    background: #1a2a3a;
+    color: #fff;
+    transform: translateY(-4px) scale(1.04);
+  }
 `;
 
 const MiniConsultantsGrid = styled.div`
@@ -130,12 +138,8 @@ const MiniPhoto = styled.img`
 `;
 
 const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick: (id: string) => void; onCardClick: () => void; }> = ({ front, photos, onPhotoClick, onCardClick }) => {
-  // Arrange photos in a hex-like 2-3-2 grid with horizontal offsets
-  // Row 1: 2 items, offset by 1 column (columns 2 and 4)
-  // Row 2: 3 items (columns 1, 3, 5)
-  // Row 3: 2 items, offset by 1 column (columns 2 and 4)
   return (
-    <div
+    <CardContainer
       onMouseEnter={() => {}}
       onMouseLeave={() => {}}
       onClick={() => {
@@ -238,34 +242,20 @@ const FlipCardWithPhotos: React.FC<{ front: string; photos: any[]; onPhotoClick:
           </MiniConsultantsGrid>
         }
       />
-    </div>
+    </CardContainer>
   );
 };
 
-const CTACardContact = styled.div`
-  perspective: 1000px;
-  width: 650px;
-  height: 420px;
-  margin: 3rem;
-  display: inline-block;
-  background: #2B4159;
-  border-radius: 16px;
-  box-shadow: 0 4px 32px rgba(61, 79, 92, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: #fff;
-  text-align: center;
-  cursor: pointer;
-  transition: box-shadow 0.2s, background 0.2s, transform 0.2s;
-  &:hover {
-    box-shadow: 0 8px 32px rgba(61, 79, 92, 0.18);
-    background: #1a2a3a;
-    color: #fff;
-    transform: translateY(-4px) scale(1.04);
-  }
+const HomeCardGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3.5rem 2.5rem;
+  margin: 3.5rem auto 0 auto;
+  width: 100%;
+  max-width: 1400px;
+  justify-items: center;
+  align-items: stretch;
+  min-height: 0;
 `;
 
 const Home: React.FC = () => {
@@ -278,7 +268,7 @@ const Home: React.FC = () => {
           "SCxCMC is your trusted partner for CMC strategy, supply chain, and pharmaceutical consulting. Our team brings decades of experience and a passion for delivering results."
         </IntroText>
       </IntroSection>
-      <CardsRow>
+      <HomeCardGrid>
         <FlipCard
           front="Why SCxMC?"
           back={
@@ -306,8 +296,6 @@ const Home: React.FC = () => {
             </DescriptionGrid>
           }
         />
-      </CardsRow>
-      <CTACardGrid>
         <FlipCardWithPhotos
           front="Meet Our Experts"
           photos={miniPhotoOrder.map(idx => consultants[idx])}
@@ -325,7 +313,7 @@ const Home: React.FC = () => {
         >
           Connect With Us
         </CTACardContact>
-      </CTACardGrid>
+      </HomeCardGrid>
     </HomeWrapper>
   );
 };

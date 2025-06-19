@@ -6,18 +6,21 @@ interface FlipCardProps {
   back: React.ReactNode;
 }
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   perspective: 1000px;
-  width: 650px;
-  height: 420px;
-  margin: 3rem;
-  display: inline-block;
+  width: 100%;
+  max-width: 650px;
+  aspect-ratio: 1 / 1;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const Card = styled.div<{ flipped: boolean }>`
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 16px;
   aspect-ratio: 1 / 1;
   position: relative;
   transition: transform 0.6s cubic-bezier(0.4,0,0.2,1);
